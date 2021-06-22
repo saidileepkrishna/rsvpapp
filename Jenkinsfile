@@ -29,7 +29,7 @@ spec:
         }
     }
   environment {
-      IMAGE_REPO = "hemanthhr/rsvpdileep"
+      IMAGE_REPO = "hemanthhr/rsvpdummy"
       // Instead of nkhare, use your repo name
   }
   stages {
@@ -50,8 +50,8 @@ spec:
     stage('Deploy to staging') {
       environment {
         GIT_CREDS = credentials('github')
-        GIT_REPO_URL = "github.com/saidileepkrishna/rsvpapp.git"
-        GIT_REPO_EMAIL = 'gadipallysaidileepkrishna@gmail.com'
+        GIT_REPO_URL = "github.com/hrabhi44/rsvpapp-helm-cicd.git"
+        GIT_REPO_EMAIL = 'hrworldtodiscover@gmail.com'
         GIT_REPO_BRANCH = "master"
           
        // Update above variables with your user details
@@ -69,8 +69,13 @@ spec:
               sh "git checkout ${env.GIT_REPO_BRANCH}"
             //install done
             sh '''#!/bin/bash
+              echo $GIT_REPO_EMAIL
+              echo $GIT_COMMIT
+              ls -lth
               yq eval '.image.repository = env(IMAGE_REPO)' -i values.yaml
               yq eval '.image.tag = env(GIT_COMMIT)' -i values.yaml
+              cat values.yaml
+              pwd
               git add values.yaml
               git commit -m 'Triggered Build'
               git push https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/$GIT_CREDS_USR/rsvpapp-helm-cicd.git
