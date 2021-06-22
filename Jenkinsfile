@@ -50,7 +50,7 @@ spec:
     stage('Deploy to staging') {
       environment {
         GIT_CREDS = credentials('github')
-        GIT_REPO_URL = "https://github.com/saidileepkrishna/rsvpapp.git"
+        GIT_REPO_URL = "github.com/saidileepkrishna/rsvpapp.git"
         GIT_REPO_EMAIL = 'gadipallysaidileepkrishna@gmail.com'
         GIT_REPO_BRANCH = "master"
           
