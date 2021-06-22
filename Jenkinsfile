@@ -29,7 +29,7 @@ spec:
         }
     }
   environment {
-      IMAGE_REPO = "hemanthhr/rsvpdummy"
+      IMAGE_REPO = "hemanthhr/rsvpdileep"
       // Instead of nkhare, use your repo name
   }
   stages {
@@ -50,8 +50,8 @@ spec:
     stage('Deploy to staging') {
       environment {
         GIT_CREDS = credentials('github')
-        GIT_REPO_URL = "github.com/hrabhi44/rsvpapp-helm-cicd.git"
-        GIT_REPO_EMAIL = 'hrworldtodiscover@gmail.com'
+        GIT_REPO_URL = "github.com/saidileepkrishna/rsvpapp-helm-cicd.git"
+        GIT_REPO_EMAIL = 'gadipallysaidileepkrishna@gmail.com'
         GIT_REPO_BRANCH = "master"
           
        // Update above variables with your user details
